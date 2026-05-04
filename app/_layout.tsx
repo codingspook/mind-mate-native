@@ -3,9 +3,11 @@ import '@/global.css';
 import { NAV_THEME } from '@/lib/theme';
 import { ThemeProvider } from '@react-navigation/native';
 import { PortalHost } from '@rn-primitives/portal';
-import { Stack } from 'expo-router';
+import { Slot } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
-import { useUniwind } from 'uniwind';
+import { View } from 'react-native';
+import { SafeAreaListener } from 'react-native-safe-area-context';
+import { Uniwind, useUniwind } from 'uniwind';
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -17,9 +19,16 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={NAV_THEME[theme ?? 'light']}>
-      <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
-      <Stack />
-      <PortalHost />
+      <SafeAreaListener
+        onChange={({ insets }) => {
+          Uniwind.updateInsets(insets);
+        }}>
+        <StatusBar style={theme === 'dark' ? 'light' : 'dark'} />
+        <View className="bg-background flex-1">
+          <Slot />
+        </View>
+        <PortalHost />
+      </SafeAreaListener>
     </ThemeProvider>
   );
 }

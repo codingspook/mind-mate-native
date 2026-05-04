@@ -1,5 +1,5 @@
 {
-  "name": "minimal",
+  "name": "mind-mate-native",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -38,6 +38,7 @@
     "@rn-primitives/tooltip": "^1.4.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "date-fns": "^4.1.0",
     "expo": "~54.0.33",
     "expo-constants": "~18.0.13",
     "expo-haptics": "~15.0.8",
