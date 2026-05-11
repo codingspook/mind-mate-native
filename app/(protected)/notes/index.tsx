@@ -31,7 +31,6 @@ export default function NotesIndex() {
     <View className="w-full flex-1 gap-5 pt-6">
       <FlashList
         data={notes}
-        estimatedItemSize={72}
         extraData={loading}
         contentContainerStyle={{
           paddingHorizontal: 24,
@@ -43,12 +42,12 @@ export default function NotesIndex() {
               {loading ? (
                 <Icon as={Loader2} className="text-foreground size-6 animate-spin" />
               ) : null}
-              <Text className="text-center text-xl font-medium text-muted-foreground">
+              <Text className="text-muted-foreground text-center text-xl font-medium">
                 {loading ? 'Caricamento note...' : 'Nessuna nota trovata'}
               </Text>
               {!loading ? (
                 <>
-                  <Text className="mb-4 text-center text-sm text-muted-foreground">
+                  <Text className="text-muted-foreground mb-4 text-center text-sm">
                     Crea una nuova nota per iniziare
                   </Text>
                   <Button
@@ -56,7 +55,7 @@ export default function NotesIndex() {
                     onPress={() => {
                       openSheet();
                     }}>
-                    <Icon as={NotebookPen} className="size-4 text-primary-foreground" />
+                    <Icon as={NotebookPen} className="text-primary-foreground size-4" />
                     <Text>Crea nuova nota</Text>
                   </Button>
                 </>
@@ -82,13 +81,13 @@ export default function NotesIndex() {
                 <Text className="truncate text-xl font-medium" numberOfLines={1}>
                   {item.title}
                 </Text>
-                <Text className="text-sm text-muted-foreground">
+                <Text className="text-muted-foreground text-sm">
                   {item.created_at
                     ? format(new Date(item.created_at), 'dd/MM/yyyy')
                     : 'Nessuna data'}
                 </Text>
               </View>
-              <Icon as={ChevronRight} className="size-4 text-foreground" />
+              <Icon as={ChevronRight} className="text-foreground size-4" />
             </View>
           </Link>
         )}
